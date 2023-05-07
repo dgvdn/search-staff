@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Staff Search</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+	<h1>Staff Search</h1>
+	<form method="post" action="/search">
+		<input type="text" name="name" placeholder="Search by name" required>
+		<button type="submit">Search</button>
+	</form>
+	<br>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Date of Birth</th>
+				<th>Address</th>
+				<th>Phone Number</th>
+				<th>CID</th>
+				<th>Description</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="staff : ${staffList}">
+				<td th:text="${staff.id}"></td>
+				<td th:text="${staff.name}"></td>
+				<td th:text="${staff.dob}"></td>
+				<td th:text="${staff.address}"></td>
+				<td th:text="${staff.phoneNumber}"></td>
+				<td th:text="${staff.cID}"></td>
+				<td th:text="${staff.description}"></td>
+				<td><a th:href="@{/details/{id}(id=${staff.id})}">View Details</a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>
